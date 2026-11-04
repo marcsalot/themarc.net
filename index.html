@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#07090d">
+<title>Marcus Ferrell</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Marcus Ferrell leads engineering teams, builds side projects, and teaches martial arts in Dallas-Fort Worth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: a black header becomes the hero with the pulse line; below it one calm reading column of three equal parts: work, side projects, martial arts. */
+:root {
+  --bg: #ffffff;
+  --surface: #f2f5fa;
+  --ink: #0b0e14;
+  --body: #262c36;
+  --muted: #5d6573;
+  --line: #d9dee7;
+  --accent: #1f5fd6;        /* blue, text-safe on white */
+  --accent-soft: #3d7cf2;
+  --hero: #07090d;          /* near-black */
+  --hero-ink: #ffffff;
+  --hero-sub: #b8c0cc;
+  --hero-accent: #5b9bff;   /* electric blue on black */
+  --pulse: #3d86ff;
+  --gold: #1f5fd6;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --text: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #07090d; --surface: #10151e; --ink: #f1f4f9; --body: #cdd4df; --muted: #8b95a5; --line: #1e2634;
+    --accent: #6ea8ff; --accent-soft: #9cc3ff; --hero: #000000; --hero-ink: #ffffff; --hero-sub: #b8c0cc; --hero-accent: #6ea8ff; --pulse: #3d86ff; --gold: #3d86ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #07090d; --surface: #10151e; --ink: #f1f4f9; --body: #cdd4df; --muted: #8b95a5; --line: #1e2634;
+  --accent: #6ea8ff; --accent-soft: #9cc3ff; --hero: #000000; --hero-ink: #ffffff; --hero-sub: #b8c0cc; --hero-accent: #6ea8ff; --pulse: #3d86ff; --gold: #3d86ff;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--body); font: 17px/1.65 var(--text); }
+.gutter { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: 780px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--display); color: var(--ink); margin: 0; text-wrap: balance; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent-soft); }
+:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 3px; border-radius: 4px; }
+
+/* Hero */
+.hero { background: var(--hero); color: var(--hero-sub); position: relative; overflow: hidden; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+/* Glow: soft blue light behind the name and under the pulse. */
+.hero[data-hero="glow"] { background:
+  radial-gradient(60% 85% at 22% 18%, color-mix(in srgb, var(--pulse) 42%, transparent), transparent 70%),
+  radial-gradient(50% 70% at 70% 105%, color-mix(in srgb, var(--pulse) 32%, transparent), transparent 70%),
+  var(--hero); }
+
+.hero .inner { position: relative; padding-block: 28px 96px; display: grid; gap: 44px; }
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .95rem; }
+.nav .mark { font-family: var(--display); font-weight: 800; color: var(--hero-ink); text-decoration: none; letter-spacing: .02em; }
+.nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav a { color: var(--hero-sub); text-decoration: none; }
+.nav a:hover { color: var(--hero-accent); }
+.hero h1 { color: var(--hero-ink); font-size: clamp(2.6rem, 9vw, 4.8rem); font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+.hero .tag { font-family: var(--display); font-weight: 600; color: var(--hero-accent); font-size: clamp(1.1rem, 3.2vw, 1.5rem); margin-top: 12px; }
+.hero p { max-width: 36em; font-size: 1.12rem; margin: 18px 0 0; color: var(--hero-sub); }
+.hero .links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.hero .links a { display: inline-flex; align-items: center; gap: 8px; color: var(--hero-ink); text-decoration: none; font-weight: 600; font-size: .95rem;
+  border: 1px solid color-mix(in srgb, var(--hero-sub) 35%, transparent); border-radius: 999px; padding: 8px 14px 8px 10px; }
+.hero .links a:hover { color: var(--hero-accent); border-color: var(--hero-accent); }
+.hero .links svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
+.pulse { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 130px; pointer-events: none; }
+.pulse path { fill: none; stroke: var(--pulse); stroke-linejoin: round; }
+.band { height: 4px; background: var(--pulse); }
+@media (prefers-reduced-motion: no-preference) {
+  .pulse .trace { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw 2.4s .3s ease-out forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+}
+
+/* Content */
+main .inner { display: grid; gap: 64px; padding-block: 56px 72px; }
+section { display: grid; gap: 20px; scroll-margin-top: 20px; }
+h2 { font-size: 1rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .12em; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.intro { font-size: 1.12rem; margin: 0; }
+.company { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.company h3 { font-size: 1.45rem; font-weight: 800; }
+.meta { color: var(--muted); font-size: .92rem; font-variant-numeric: tabular-nums; }
+.roles { display: grid; gap: 28px; }
+.role { display: grid; gap: 6px; }
+.role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.role-head h4 { margin: 0; font: 700 1.08rem var(--display); color: var(--ink); }
+.role p { margin: 0; }
+ul.points { margin: 4px 0 0; padding-left: 1.1em; display: grid; gap: 8px; }
+ul.points li::marker { color: var(--accent-soft); }
+.before { margin: 0; color: var(--body); }
+
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 640px) { .projects { grid-template-columns: minmax(0, 1fr); } }
+.project { background: var(--surface); border-radius: 12px; padding: 20px; display: grid; gap: 8px; align-content: start; }
+.project h3 { font-size: 1.2rem; }
+.project p { margin: 0; font-size: .98rem; }
+.tags { font-size: .82rem; color: var(--muted); letter-spacing: .02em; }
+
+.dojo { border-left: 4px solid var(--gold); padding-left: 18px; display: grid; gap: 8px; }
+.dojo h3 { font-size: 1.3rem; }
+.dojo p { margin: 0; }
+
+.contact p { margin: 0; }
+.form { display: grid; gap: 14px; }
+.form .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 560px) { .form .row { grid-template-columns: minmax(0, 1fr); } }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-weight: 600; color: var(--ink); font-size: .95rem; }
+.field input, .field textarea { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; width: 100%; }
+.field textarea { resize: vertical; min-height: 130px; }
+.field input:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.field [aria-invalid="true"] { border-color: #d0342c; }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.send { font: 700 1rem var(--display); background: var(--accent); color: var(--bg); border: 0; border-radius: 10px; padding: 12px 20px; cursor: pointer; }
+.send:hover { background: var(--accent-soft); }
+.send[disabled] { opacity: .6; cursor: wait; }
+.status { margin: 0; font-size: .95rem; }
+.status.ok { color: var(--accent); font-weight: 600; }
+.status.err { color: #d0342c; }
+footer { border-top: 1px solid var(--line); }
+footer .inner { padding-block: 24px 40px; color: var(--muted); font-size: .9rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head>
+<body>
+
+<header class="hero gutter" data-hero="glow">
+  <svg class="pulse" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 108 H520 L534 108 L544 98 L554 108 L568 108 L580 58 L596 120 L608 108 L626 108 L636 100 L646 108 H1200" stroke-width="7" stroke-opacity=".14"/>
+    <path class="trace" d="M0 108 H520 L534 108 L544 98 L554 108 L568 108 L580 58 L596 120 L608 108 L626 108 L636 100 L646 108 H1200" stroke-width="2" stroke-opacity=".8"/>
+  </svg>
+  <div class="inner">
+    <nav class="nav" aria-label="Sections">
+      <a class="mark" href="#top">themarc.net</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#dojo">Martial arts</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div id="top">
+      <h1>Marcus Ferrell</h1>
+      <div class="tag">I lead engineering teams, build side projects, and teach martial arts.</div>
+      <p>I live in Dallas-Fort Worth, have worked remotely since 2008, and still review the pull requests. Off the clock I'm usually on the mat, tinkering with something new, or out walking the dogs.</p>
+      <div class="links">
+        <a href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 3.2V17h16V8.2l-8 5.3-8-5.3ZM19.2 7H4.8L12 11.8 19.2 7Z"/></svg>Contact</a>
+        <a href="https://www.linkedin.com/in/marcus-ferrell/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a>
+        <a href="https://github.com/marcsalot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3Z"/></svg>GitHub</a>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="band"></div>
+
+<main class="gutter">
+  <div class="inner">
+    <section id="work" aria-labelledby="work-h">
+      <h2 id="work-h">Work</h2>
+      <p class="intro">I'm a senior engineering manager at CorroHealth, a healthcare revenue-cycle company. My teams build and run the systems that turn hospital charts into coded, billable claims.</p>
+      <div class="company"><h3>CorroHealth</h3><span class="meta">2018 to present · Remote</span></div>
+      <div class="roles">
+        <div class="role">
+          <div class="role-head"><h4>Senior Manager of Software Engineering</h4><span class="meta">2024 to present</span></div>
+          <p>Grew the organization to 28 people across six teams (legacy platform, FHIR integration, QA, DBA, DevOps and Reporting), hiring 24 of them and promoting three into team-lead roles.</p>
+          <ul class="points">
+            <li>Led the rewrite of a 5.2-million-line .NET medical-coding platform onto .NET 10, React 19 and Azure Container Apps. The first working version shipped in six weeks, built with Claude Code.</li>
+            <li>Ran a year-long stability program after the platform hit capacity, reaching 99.9% uptime.</li>
+            <li>Started the FHIR integration team, which pulls patient records from Epic, Oracle Health and Meditech.</li>
+            <li>Built the company's AI-assisted engineering practice and founded its AI Champions committee.</li>
+            <li>Owned the company's first two HITRUST audits, both with no findings. Member of the Change Advisory Board.</li>
+          </ul>
+        </div>
+        <div class="role">
+          <div class="role-head"><h4>Manager of Production Operations</h4><span class="meta">2022 to 2024</span></div>
+          <p>Upgraded SQL Server, wrote the department's 200-page engineering wiki, and introduced code reviews and unit testing.</p>
+        </div>
+        <div class="role">
+          <div class="role-head"><h4>Development Team Lead</h4><span class="meta">2018 to 2022</span></div>
+          <p>Moved the platform from an on-site server closet to Azure, and from SVN to Git with automated releases.</p>
+        </div>
+      </div>
+      <p class="before">Before that I spent 17 years as a .NET and SQL Server developer, on charity and grant platforms at Seabrooks and financial systems at JCPenney. B.S. in Computer Information Systems, DeVry University.</p>
+    </section>
+
+    <section id="projects" aria-labelledby="proj-h">
+      <h2 id="proj-h">Side projects</h2>
+      <div class="projects">
+        <article class="project">
+          <h3>FHIR MCP Server</h3>
+          <p>An open-source server that lets Claude answer questions about patient records over FHIR. Read-only by design, with SMART on FHIR sign-in, a tamper-evident audit log, a de-identified mode, and an evaluation comparing Claude with Google's MedGemma.</p>
+          <div class="tags">.NET 10 · FHIR R4 · MCP</div>
+          <a href="https://github.com/marcsalot/fhir-mcp">View on GitHub</a>
+        </article>
+        <article class="project">
+          <h3>Walk Window</h3>
+          <p>Tells you whether it's safe to walk the dog right now: estimated pavement heat, wind chill, storms and air quality for your location, with the best times to walk today.</p>
+          <div class="tags">JavaScript · Open-Meteo</div>
+          <a href="https://github.com/marcsalot">View on GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="dojo" aria-labelledby="dojo-h">
+      <h2 id="dojo-h">Martial arts</h2>
+      <div class="dojo">
+        <h3>Third-degree black belt, instructor</h3>
+        <span class="meta">Chamberlain Studios of Self Defense · since 2019</span>
+        <p>I teach adults and kids, and I produce the studio's training videos and social media. Teaching on the mat and leading engineers turn out to need the same things: clear standards, patience, and a lot of repetition.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Say hello</h2>
+      <p>Send me a message and I'll reply by email. You can also find me on <a href="https://www.linkedin.com/in/marcus-ferrell/">LinkedIn</a> and <a href="https://github.com/marcsalot">GitHub</a>.</p>
+      <form id="contact-form" class="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <!-- Web3Forms access key: an alias for the inbox, safe to publish; the email address itself never appears in the page. -->
+        <input type="hidden" name="access_key" value="f62f8cd3-3eda-4c44-99d4-823c8fa18913">
+        <input type="hidden" name="subject" value="New message from themarc.net">
+        <input type="hidden" name="from_name" value="themarc.net">
+        <!-- Honeypot: people never see or tick this; bots that fill every field get dropped. -->
+        <input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="row">
+          <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" autocomplete="name" required maxlength="100"></div>
+          <div class="field"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+        </div>
+        <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="5" required maxlength="5000"></textarea></div>
+        <div class="actions"><button type="submit" class="send">Send message</button><p class="status" id="cf-status" role="status"></p></div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<footer class="gutter"><div class="inner"><span>Marcus Ferrell · Dallas-Fort Worth, Texas</span><span>themarc.net</span></div></footer>
+
+<script>
+(() => {
+  // Contact form: sends through Web3Forms, so the email address never appears in the page.
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("cf-status");
+  const send = form.querySelector(".send");
+  const say = (text, kind) => { status.textContent = text; status.className = "status " + (kind || ""); };
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    let firstBad = null;
+    for (const el of form.querySelectorAll("[required]")) {
+      const ok = el.value.trim() !== "" && (el.type !== "email" || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim()));
+      el.setAttribute("aria-invalid", String(!ok));
+      if (!ok && !firstBad) firstBad = el;
+    }
+    if (firstBad) { say("Please fill in your name, a valid email and a message.", "err"); firstBad.focus(); return; }
+    if (form.botcheck.checked) { say("Thanks, your message was sent.", "ok"); form.reset(); return; }
+    if (form.access_key.value.startsWith("YOUR-")) { say("This preview can't send messages yet. On themarc.net, the form will deliver to your inbox.", "err"); return; }
+
+    send.disabled = true; say("Sending...");
+    try {
+      const res = await fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success !== false) { form.reset(); say("Thanks, your message was sent. I'll reply by email.", "ok"); }
+      else say("The message didn't go through. Please try again in a minute, or reach me on LinkedIn.", "err");
+    } catch {
+      say("The message didn't go through. Check your connection and try again, or reach me on LinkedIn.", "err");
+    } finally { send.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
