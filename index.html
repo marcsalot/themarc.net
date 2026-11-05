@@ -131,6 +131,9 @@ ul.points li::marker { color: var(--accent-soft); }
 .status { margin: 0; font-size: .95rem; }
 .status.ok { color: var(--accent); font-weight: 600; }
 .status.err { color: #d0342c; }
+.album { display: grid; gap: 12px; }
+.album h3 { font-size: 1.1rem; }
+.album + .album { margin-top: 12px; }
 .gallery { columns: 3 220px; column-gap: 12px; }
 @media (max-width: 640px) { .gallery { columns: 2; column-gap: 8px; } .shot { margin-bottom: 8px; } }
 .shot { display: block; margin: 0 0 12px; border-radius: 10px; overflow: hidden; break-inside: avoid; background: var(--surface); }
@@ -269,17 +272,39 @@ footer .inner { padding-block: 24px 40px; color: var(--muted); font-size: .9rem;
 
     <section id="photos" aria-labelledby="photos-h">
       <h2 id="photos-h">Photos</h2>
-      <p class="before">A few favorites from the mat.</p>
-      <div class="gallery">
-        <a class="shot" href="photos/staff-stance.jpg" data-alt="A black belt in a low stance with a bo staff across his shoulders"><img src="photos/staff-stance-sm.jpg" alt="A black belt in a low stance with a bo staff across his shoulders" width="600" height="800" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/flying-kick.jpg" data-alt="A black belt mid-air in a flying side kick on a grass field"><img src="photos/flying-kick-sm.jpg" alt="A black belt mid-air in a flying side kick on a grass field" width="800" height="500" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/throw.jpg" data-alt="An instructor throws a student over his shoulder during class"><img src="photos/throw-sm.jpg" alt="An instructor throws a student over his shoulder during class" width="800" height="450" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/portrait.jpg" data-alt="A smiling instructor with arms crossed, in black and white"><img src="photos/portrait-sm.jpg" alt="A smiling instructor with arms crossed, in black and white" width="640" height="800" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/red-and-black.jpg" data-alt="Two black belts drilling a wrist release, edited in black, white and red"><img src="photos/red-and-black-sm.jpg" alt="Two black belts drilling a wrist release, edited in black, white and red" width="800" height="533" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/bo-class.jpg" data-alt="A full class practicing bo staff stances in a gym"><img src="photos/bo-class-sm.jpg" alt="A full class practicing bo staff stances in a gym" width="800" height="450" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/headlock.jpg" data-alt="Two instructors clowning for the camera in a headlock, in black and white"><img src="photos/headlock-sm.jpg" alt="Two instructors clowning for the camera in a headlock, in black and white" width="800" height="600" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/punch.jpg" data-alt="A senior instructor lands a controlled punch on a partner, in black and white"><img src="photos/punch-sm.jpg" alt="A senior instructor lands a controlled punch on a partner, in black and white" width="800" height="533" loading="lazy" decoding="async"></a>
-        <a class="shot" href="photos/black-belts.jpg" data-alt="A group of black belts striking a pose with traditional weapons"><img src="photos/black-belts-sm.jpg" alt="A group of black belts striking a pose with traditional weapons" width="800" height="533" loading="lazy" decoding="async"></a>
+      <p class="before">A few favorites from the mat, from home, and from the road.</p>
+      <div class="album">
+        <h3>On the mat</h3>
+        <div class="gallery">
+          <a class="shot" href="photos/staff-stance.jpg" data-alt="A black belt in a low stance with a bo staff across his shoulders"><img src="photos/staff-stance-sm.jpg" alt="A black belt in a low stance with a bo staff across his shoulders" width="600" height="800" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/flying-kick.jpg" data-alt="A black belt mid-air in a flying side kick on a grass field"><img src="photos/flying-kick-sm.jpg" alt="A black belt mid-air in a flying side kick on a grass field" width="800" height="500" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/throw.jpg" data-alt="An instructor throws a student over his shoulder during class"><img src="photos/throw-sm.jpg" alt="An instructor throws a student over his shoulder during class" width="800" height="450" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/portrait.jpg" data-alt="A smiling instructor with arms crossed, in black and white"><img src="photos/portrait-sm.jpg" alt="A smiling instructor with arms crossed, in black and white" width="640" height="800" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/red-and-black.jpg" data-alt="Two black belts drilling a wrist release, edited in black, white and red"><img src="photos/red-and-black-sm.jpg" alt="Two black belts drilling a wrist release, edited in black, white and red" width="800" height="533" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/bo-class.jpg" data-alt="A full class practicing bo staff stances in a gym"><img src="photos/bo-class-sm.jpg" alt="A full class practicing bo staff stances in a gym" width="800" height="450" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/headlock.jpg" data-alt="Two instructors clowning for the camera in a headlock, in black and white"><img src="photos/headlock-sm.jpg" alt="Two instructors clowning for the camera in a headlock, in black and white" width="800" height="600" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/punch.jpg" data-alt="A senior instructor lands a controlled punch on a partner, in black and white"><img src="photos/punch-sm.jpg" alt="A senior instructor lands a controlled punch on a partner, in black and white" width="800" height="533" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/black-belts.jpg" data-alt="A group of black belts striking a pose with traditional weapons"><img src="photos/black-belts-sm.jpg" alt="A group of black belts striking a pose with traditional weapons" width="800" height="533" loading="lazy" decoding="async"></a>
+        </div>
+      </div>
+      <div class="album">
+        <h3>At home</h3>
+        <div class="gallery">
+          <a class="shot" href="photos/pet-black-dog.jpg" data-alt="A black dog resting its head on a leather couch, in black and white"><img src="photos/pet-black-dog-sm.jpg" alt="A black dog resting its head on a leather couch, in black and white" width="800" height="598" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/pet-puppy-rocks.jpg" data-alt="A long-haired puppy crouched on river rocks"><img src="photos/pet-puppy-rocks-sm.jpg" alt="A long-haired puppy crouched on river rocks" width="800" height="600" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/pet-sleeping-dog.jpg" data-alt="A spotted dog asleep with its head on a paw"><img src="photos/pet-sleeping-dog-sm.jpg" alt="A spotted dog asleep with its head on a paw" width="800" height="800" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/pet-puppy-planter.jpg" data-alt="A puppy in a harness peeking over a garden planter"><img src="photos/pet-puppy-planter-sm.jpg" alt="A puppy in a harness peeking over a garden planter" width="800" height="800" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/pet-cat.jpg" data-alt="A kitten with a half-dark face sitting in a bag, in black and white"><img src="photos/pet-cat-sm.jpg" alt="A kitten with a half-dark face sitting in a bag, in black and white" width="795" height="800" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/pet-chihuahua.jpg" data-alt="A long-haired chihuahua curled up on an ottoman"><img src="photos/pet-chihuahua-sm.jpg" alt="A long-haired chihuahua curled up on an ottoman" width="480" height="360" loading="lazy" decoding="async"></a>
+        </div>
+      </div>
+      <div class="album">
+        <h3>On the road</h3>
+        <div class="gallery">
+          <a class="shot" href="photos/travel-eiffel.jpg" data-alt="Looking up through the iron lattice of the Eiffel Tower, in black and white"><img src="photos/travel-eiffel-sm.jpg" alt="Looking up through the iron lattice of the Eiffel Tower, in black and white" width="360" height="526" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/travel-arches.jpg" data-alt="Shadows from a row of brick arches across a walkway, in black and white"><img src="photos/travel-arches-sm.jpg" alt="Shadows from a row of brick arches across a walkway, in black and white" width="360" height="560" loading="lazy" decoding="async"></a>
+          <a class="shot" href="photos/travel-trees.jpg" data-alt="A person walking down a long avenue under tall trees"><img src="photos/travel-trees-sm.jpg" alt="A person walking down a long avenue under tall trees" width="360" height="540" loading="lazy" decoding="async"></a>
+        </div>
       </div>
     </section>
 
